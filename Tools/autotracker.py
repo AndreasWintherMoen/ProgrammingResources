@@ -1048,7 +1048,7 @@ def randoname():
 
 name = randoname()
 itf.name = name
-fname = "bu-%s.it" % name.replace(" ","-").replace("'","")
+fname = "%s.it" % name.replace(" ","-").replace("'","")
 if len(sys.argv) > 1:
     fname = sys.argv[1]
 itf.save(fname)
