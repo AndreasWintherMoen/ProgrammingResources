@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="name">String name of desired audio clip. Must match exact name in audioClipsList</param>
     /// <param name="volume">Volume of clip. Default = 1</param>
     /// <param name="loop">Should the clip replay after completion?</param>
-    public void Play(string name, float pitch = 1f, bool loop = false)
+    public void Play(string name, float volume = 1f, float pitch = 1f, bool loop = false)
     {
         AudioSource AS = FindAudioSource();
         AS.Stop();
