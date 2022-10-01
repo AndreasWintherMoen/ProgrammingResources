@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class API : MonoBehaviour
 {
     private static API s_Instance = null;
-    public static API Instance
+    private static API Instance
     {
         get
         {
@@ -25,12 +24,22 @@ public class API : MonoBehaviour
         }
     }
 
-    public void Get<T>(string url, System.Action<T> callback)
+    public static void Get<T>(string url, System.Action<T> callback)
+    {
+        Instance.LocalGet<T>(url, callback);
+    }
+
+    public static void Post<T>(string url, T data, System.Action<T> callback)
+    {
+        Instance.LocalPost<T>(url, data, callback);
+    }
+
+    private void LocalGet<T>(string url, System.Action<T> callback)
     {
         StartCoroutine(GetRequest<T>(url, callback));
     }
 
-    public void Post<T>(string url, T data, System.Action<T> callback)
+    private void LocalPost<T>(string url, T data, System.Action<T> callback)
     {
         StartCoroutine(PostRequest<T>(url, data, callback));
     }
